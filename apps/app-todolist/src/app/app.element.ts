@@ -1,0 +1,1 @@
+import '@micro-frontend/todolist';

@@ -1,0 +1,70 @@
+{
+  "projectType": "application",
+  "root": "apps/app-todolist",
+  "sourceRoot": "apps/app-todolist/src",
+  "tags": [],
+  "targets": {
+    "build": {
+      "executor": "@nrwl/web:webpack",
+      "outputs": ["{options.outputPath}"],
+      "defaultConfiguration": "production",
+      "options": {
+        "outputPath": "dist/apps/app-todolist",
+        "compiler": "swc",
+        "index": "apps/app-todolist/src/index.html",
+        "baseHref": "/",
+        "main": "apps/app-todolist/src/main.ts",
+        "polyfills": "apps/app-todolist/src/polyfills.ts",
+        "tsConfig": "apps/app-todolist/tsconfig.app.json",
+        "assets": [
+          "apps/app-todolist/src/favicon.ico",
+          "apps/app-todolist/src/assets"
+        ],
+        "styles": ["apps/app-todolist/src/styles.scss"],
+        "scripts": []
+      },
+      "configurations": {
+        "production": {
+          "fileReplacements": [
+            {
+              "replace": "apps/app-todolist/src/environments/environment.ts",
+              "with": "apps/app-todolist/src/environments/environment.prod.ts"
+            }
+          ],
+          "optimization": true,
+          "outputHashing": "none",
+          "sourceMap": false,
+          "namedChunks": false,
+          "extractLicenses": true,
+          "vendorChunk": false
+        }
+      }
+    },
+    "serve": {
+      "executor": "@nrwl/web:dev-server",
+      "options": {
+        "buildTarget": "app-todolist:build"
+      },
+      "configurations": {
+        "production": {
+          "buildTarget": "app-todolist:build:production"
+        }
+      }
+    },
+    "lint": {
+      "executor": "@nrwl/linter:eslint",
+      "outputs": ["{options.outputFile}"],
+      "options": {
+        "lintFilePatterns": ["apps/app-todolist/**/*.ts"]
+      }
+    },
+    "test": {
+      "executor": "@nrwl/jest:jest",
+      "outputs": ["coverage/apps/app-todolist"],
+      "options": {
+        "jestConfig": "apps/app-todolist/jest.config.js",
+        "passWithNoTests": true
+      }
+    }
+  }
+}

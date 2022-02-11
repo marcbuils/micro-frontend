@@ -1,0 +1,37 @@
+{
+  "root": "libs/todolist",
+  "sourceRoot": "libs/todolist/src",
+  "projectType": "library",
+  "targets": {
+    "build": {
+      "executor": "@nrwl/web:rollup",
+      "outputs": ["{options.outputPath}"],
+      "options": {
+        "compiler": "babel",
+        "project": "libs/todolist/package.json",
+        "outputPath": "dist/libs/todolist",
+        "entryFile": "libs/todolist/src/index.ts",
+        "tsConfig": "libs/todolist/tsconfig.lib.json",
+        "rollupConfig": [
+          "libs/todolist/rollup.config.cjs"
+        ]
+      }
+    },
+    "lint": {
+      "executor": "@nrwl/linter:eslint",
+      "outputs": ["{options.outputFile}"],
+      "options": {
+        "lintFilePatterns": ["libs/todolist/**/*.ts"]
+      }
+    },
+    "test": {
+      "executor": "@nrwl/jest:jest",
+      "outputs": ["coverage/libs/todolist"],
+      "options": {
+        "jestConfig": "libs/todolist/jest.config.js",
+        "passWithNoTests": true
+      }
+    }
+  },
+  "tags": ["library", "todolist"]
+}

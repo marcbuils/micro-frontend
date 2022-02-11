@@ -1,7 +1,11 @@
 {
   "version": 2,
   "projects": {
+    "app-todolist": "apps/app-todolist",
+    "app-todolist-e2e": "apps/app-todolist-e2e",
     "demo": "apps/demo",
-    "demo-e2e": "apps/demo-e2e"
+    "demo-e2e": "apps/demo-e2e",
+    "todolist": "libs/todolist",
+    "ui-demo": "libs/ui-demo"
   }
 }

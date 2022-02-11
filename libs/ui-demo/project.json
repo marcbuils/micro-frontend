@@ -1,0 +1,37 @@
+{
+  "root": "libs/ui-demo",
+  "sourceRoot": "libs/ui-demo/src",
+  "projectType": "library",
+  "targets": {
+    "build": {
+      "executor": "@nrwl/web:rollup",
+      "outputs": ["{options.outputPath}"],
+      "options": {
+        "compiler": "babel",
+        "project": "libs/ui-demo/package.json",
+        "outputPath": "dist/libs/ui-demo",
+        "entryFile": "libs/ui-demo/src/index.ts",
+        "tsConfig": "libs/ui-demo/tsconfig.lib.json",
+        "rollupConfig": [
+          "libs/ui-demo/rollup.config.cjs"
+        ]
+      }
+    },
+    "lint": {
+      "executor": "@nrwl/linter:eslint",
+      "outputs": ["{options.outputFile}"],
+      "options": {
+        "lintFilePatterns": ["libs/ui-demo/**/*.ts"]
+      }
+    },
+    "test": {
+      "executor": "@nrwl/jest:jest",
+      "outputs": ["coverage/libs/ui-demo"],
+      "options": {
+        "jestConfig": "libs/ui-demo/jest.config.js",
+        "passWithNoTests": true
+      }
+    }
+  },
+  "tags": []
+}

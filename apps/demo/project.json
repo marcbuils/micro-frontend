@@ -9,8 +9,8 @@
       "outputs": ["{options.outputPath}"],
       "defaultConfiguration": "production",
       "options": {
+        "compiler": "swc",
         "outputPath": "dist/apps/demo",
-        "compiler": "babel",
         "index": "apps/demo/src/index.html",
         "baseHref": "/",
         "main": "apps/demo/src/main.ts",
@@ -18,7 +18,8 @@
         "tsConfig": "apps/demo/tsconfig.app.json",
         "assets": ["apps/demo/src/favicon.ico", "apps/demo/src/assets"],
         "styles": ["apps/demo/src/styles.scss"],
-        "scripts": []
+        "scripts": [],
+        "webpackConfig": "apps/demo/webpack.config.js"
       },
       "configurations": {
         "production": {
@@ -29,11 +30,19 @@
             }
           ],
           "optimization": true,
-          "outputHashing": "all",
+          "outputHashing": "none",
           "sourceMap": false,
           "namedChunks": false,
           "extractLicenses": true,
           "vendorChunk": false
+        },
+        "development": {
+          "optimization": false,
+          "outputHashing": "none",
+          "sourceMap": true,
+          "namedChunks": true,
+          "extractLicenses": false,
+          "vendorChunk": true
         }
       }
     },
@@ -45,6 +54,9 @@
       "configurations": {
         "production": {
           "buildTarget": "demo:build:production"
+        },
+        "development": {
+          "buildTarget": "demo:build:development"
         }
       }
     },
